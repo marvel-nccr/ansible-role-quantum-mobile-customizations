@@ -1,4 +1,6 @@
 ---
 - hosts: localhost
   roles:
-  - quantum-mobile-customizations
+  - role: quantum-mobile-customizations
+    vars:
+      cloud_platform: docker

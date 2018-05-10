@@ -1,16 +1,6 @@
-- import_tasks: release_notes.yml 
-  tags: qm_customizations_release_notes
-  when: release_notes is defined and release_notes
-- import_tasks: shared_folder.yml 
-  tags: qm_customizations_shared_folder
-- import_tasks: global_bashrc.yml 
-  tags: qm_customizations_global_bashrc
-- import_tasks: folders.yml 
-  tags: qm_customizations_folders
+---
+- include_tasks: virtualbox.yml
+  when: cloud_platform == 'virtualbox'
 
-- name: lightdm-related
-  block:
-    - import_tasks: wallpaper.yml 
-      tags: qm_customizations_wallpaper
-    - meta: flush_handlers
-  when: not qm_customizations_headless
+- include_tasks: cloud.yml
+  when: cloud_platform != 'virtualbox'
