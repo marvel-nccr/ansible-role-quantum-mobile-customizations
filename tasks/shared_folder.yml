@@ -26,7 +26,7 @@
       name: "{{ qm_customizations_vm_user }}"
       groups: vboxsf
       append: True
-  when: cloud_platform is 'virtualbox'
+  when: cloud_platform == 'virtualbox'
 
 - include_role:
     name: release_notes
