@@ -1,0 +1,31 @@
+---
+- name: Create folder for examples
+  file:
+      path: "{{ qm_customizations_examples_folder }}"
+      state: directory
+
+- name: clean compiled python files
+  shell: find . -name "*.pyc" | xargs rm -f
+  ignore_errors: True
+  args:
+    chdir: "{{ qm_customizations_examples_folder }}"
+  when: clean is defined and clean
+
+- name: Add readme for examples
+  ini_file:
+    path: "{{ qm_customizations_examples_readme }}"
+    section: "General"
+    option: "info"
+    value: >-
+      This folder contains examples of how to use the various codes that are
+      available in the VM.
+      You find this folder both in the user home directory and (symlinked) on
+      the Desktop.
+    create: true
+
+- name: symlink examples to desktop
+  file:
+    src: "{{ qm_customizations_examples_folder }}"
+    dest: "${HOME}/Desktop/examples"
+    state: link
+  when: not qm_customizations_headless
