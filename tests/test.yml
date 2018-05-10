@@ -4,3 +4,4 @@
   - role: quantum-mobile-customizations
     vars:
       cloud_platform: docker
+      qm_customizations_headless: True
