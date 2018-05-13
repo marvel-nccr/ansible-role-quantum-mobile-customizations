@@ -11,6 +11,7 @@
 
 - name: Create folder for generic MARVEL data in global machine
   become: true
+  become_user: "{{ root_user }}"
   file:
       path: "/usr/share/marvelnccr"
       state: directory
@@ -18,6 +19,7 @@
 
 - name: Copy the background image
   become: true
+  become_user: "{{ root_user }}"
   copy:
       src: quantum-mobile-bg.png
       dest: "/usr/share/marvelnccr/quantum-mobile-bg.png"
@@ -25,6 +27,7 @@
 
 - name: set lightdm (login page) not to draw the user background
   become: true
+  become_user: "{{ root_user }}"
   ini_file: 
     path: /usr/share/glib-2.0/schemas/10_unity-settings-daemon.gschema.override
     section: "com.canonical.unity-greeter"
@@ -35,6 +38,7 @@
 
 - name: set lightdm (login page) background
   become: true
+  become_user: "{{ root_user }}"
   ini_file: 
     path: /usr/share/glib-2.0/schemas/10_unity-settings-daemon.gschema.override
     section: "com.canonical.unity-greeter"
@@ -45,11 +49,13 @@
 
 - name: recreate schemas to apply modifications
   become: true
+  become_user: "{{ root_user }}"
   command: glib-compile-schemas /usr/share/glib-2.0/schemas
   when: (lightdm_background.changed) or (lightdm_draw_user_backgrounds.changed)
 
 - name: add packages (pip)
   become: true
+  become_user: "{{ root_user }}"
   pip:
     name: "{{item}}"
   with_items:

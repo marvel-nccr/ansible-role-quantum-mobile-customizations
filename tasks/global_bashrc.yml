@@ -1,5 +1,6 @@
 - name: set the Message Of The Day (MOTD)
   become: true
+  become_user: "{{ root_user }}"
   template:
     src: motd
     dest: "/etc/motd"
