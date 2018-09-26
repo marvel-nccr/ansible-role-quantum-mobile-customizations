@@ -12,9 +12,11 @@
 - import_tasks: folders.yml 
   tags: qm_customizations_folders
 
-- name: lightdm-related
+- name: gdm3-related
   block:
     - import_tasks: wallpaper.yml 
       tags: qm_customizations_wallpaper
     - meta: flush_handlers
+    - import_tasks: faq.yml
+      tags: qm_customizations_faq
   when: not qm_customizations_headless
