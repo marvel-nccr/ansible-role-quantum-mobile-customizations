@@ -1,0 +1,16 @@
+---
+- name: make icons directory
+  file:
+    dest: "${HOME}/.icons"
+    state: directory
+
+- name: copy quamtum-mobile logo
+  copy:
+    src: quantum-mobile-logo.png
+    dest: "${HOME}/.icons/"
+
+- name: create desktop shortcut
+  template:
+    src: faq.desktop
+    dest: "${HOME}/Desktop"
+    mode: 0753

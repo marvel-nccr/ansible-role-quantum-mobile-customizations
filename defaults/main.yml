@@ -1,6 +1,6 @@
 qm_customizations_headless: False
 qm_customizations_vm_user: ubuntu
-#qm_customizations_vm_password: ubuntu  # Need to specify this!
+#qm_customizations_vm_password: # Need to specify this!
 qm_customizations_browser: firefox
 
 qm_customizations_vm_name: "Quantum Mobile"
