@@ -12,11 +12,13 @@
 - import_tasks: folders.yml 
   tags: qm_customizations_folders
 
-- name: gdm3-related
+- name: gui-related tasks
+  tags: qm_customizations_gui
   block:
-    - import_tasks: wallpaper.yml 
-      tags: qm_customizations_wallpaper
+    - include_tasks: gui-ubuntu-16.04.yml
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+    - include_tasks: gui-ubuntu-18.04.yml
+      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
     - meta: flush_handlers
     - import_tasks: faq.yml
-      tags: qm_customizations_faq
   when: not qm_customizations_headless

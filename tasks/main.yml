@@ -1,6 +1,6 @@
 ---
-- include_tasks: virtualbox.yml
+- include_tasks: cloud-platform-virtualbox.yml
   when: cloud_platform == 'virtualbox'
 
-- include_tasks: cloud.yml
+- include_tasks: cloud-platform-generic.yml
   when: cloud_platform != 'virtualbox'
