@@ -1,15 +1,4 @@
 ---
-- name: Create folder for generic MARVEL data
-  file:
-      path: "{{ qm_customizations_custom_folder }}"
-      state: directory
-
-- name: Copy the background image
-  copy:
-      src: quantum-mobile-bg.png
-      dest: "{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"
-      mode: 0755
-
 # Note: This is applied immediately, no restart needed
 - name: set wallpaper
   dconf:
