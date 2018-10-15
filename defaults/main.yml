@@ -10,6 +10,7 @@ qm_customizations_vm_author: "MARVEL NCCR and MaX CoE"
 qm_customizations_codes_folder: "${HOME}"
 qm_customizations_examples_folder: "${HOME}"
 qm_customizations_examples_readme: "{{ qm_customizations_examples_folder }}/README.txt"
+qm_customizations_custom_folder: "${HOME}/.local/share/customizations"
 
 cloud_platform: virtualbox
 root_user: root
