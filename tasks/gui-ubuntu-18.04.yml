@@ -1,19 +1,18 @@
 ---
 - name: Create folder for generic MARVEL data
   file:
-      path: "${HOME}/.local/share/marvelnccr"
+      path: "{{ qm_customizations_custom_folder }}"
       state: directory
 
 - name: Copy the background image
   copy:
       src: quantum-mobile-bg.png
-      dest: "${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"
+      dest: "{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"
       mode: 0755
 
-## To work around error:
-# Cannot autolaunch D-Bus without X11 $DISPLAY
-- name: set the background image
-  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"
-  args:
-    executable: /bin/bash
-  notify: restart gdm3
+# Note: This is applied immediately, no restart needed
+- name: set wallpaper
+  dconf:
+    key: /org/gnome/desktop/background/picture-uri
+    value: "'file://{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png'"
+    state: present
