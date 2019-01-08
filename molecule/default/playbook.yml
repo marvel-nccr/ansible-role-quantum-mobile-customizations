@@ -12,4 +12,4 @@
     - cloud_platform: docker
 
   roles:
-    - role: marvel-nccr.cp2k
+    - role: marvel-nccr.quantum-mobile-customizations
