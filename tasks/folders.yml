@@ -34,6 +34,12 @@
       the Desktop.
     create: true
 
+- name: create desktop if not exists
+  file:
+    path: "${HOME}/Desktop/examples"
+    state: directory
+  when: not qm_customizations_headless
+
 - name: symlink examples to desktop
   file:
     src: "{{ qm_customizations_examples_folder }}"
