@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/marvel-nccr/ansible-role-quantum-mobile-customizations.svg?branch=master)](https://travis-ci.org/marvel-nccr/ansible-role-quantum-mobile-customizations)
+
 # Ansible Role: marvel-nccr.quantum-mobile-customizations
 
 An ansible role that customizes Ubuntu for [Quantum Mobile](https://github.com/marvel-nccr/quantum-mobile).
@@ -12,9 +14,21 @@ See `defaults/main.yml`
 
 ## Example Playbook
 
-  - hosts: servers
-    roles:
-    - role: marvel-nccr.quantum-mobile-customizations
+```
+- hosts: machines
+  roles:
+  - role: nccr-marvel.quantum-mobile-customizations
+```
+
+## Tests
+
+This role uses [Molecule](https://molecule.readthedocs.io/en/latest/#) and
+Docker for tests. Once Docker is installed, run tests using
+
+```bash
+pip install -r requirements.txt
+molecule test
+```
 
 ## License
 

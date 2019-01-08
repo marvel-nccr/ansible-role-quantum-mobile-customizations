@@ -1,15 +1,15 @@
 ---
-- import_tasks: release_notes.yml 
+- import_tasks: release_notes.yml
   tags: qm_customizations_release_notes
   when: release_notes is defined and release_notes
 
-- import_tasks: shared_folder.yml 
+- import_tasks: shared_folder.yml
   tags: qm_customizations_shared_folder
 
-- import_tasks: global_bashrc.yml 
+- import_tasks: global_bashrc.yml
   tags: qm_customizations_global_bashrc
 
-- import_tasks: folders.yml 
+- import_tasks: folders.yml
   tags: qm_customizations_folders
 
 - name: gui-related tasks
@@ -23,4 +23,3 @@
   when: not qm_customizations_headless
 
 - meta: flush_handlers
-

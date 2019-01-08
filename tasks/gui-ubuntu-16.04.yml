@@ -3,17 +3,17 @@
   become: true
   become_user: "{{ root_user }}"
   file:
-      path: "/usr/share/marvelnccr"
-      state: directory
-      mode: 0755
+    path: "/usr/share/marvelnccr"
+    state: directory
+    mode: 0755
 
 - name: Copy the background image
   become: true
   become_user: "{{ root_user }}"
   copy:
-      src: quantum-mobile-bg.png
-      dest: "/usr/share/marvelnccr/quantum-mobile-bg.png"
-      mode: 0755
+    src: quantum-mobile-bg.png
+    dest: "/usr/share/marvelnccr/quantum-mobile-bg.png"
+    mode: 0755
 
 - name: set lightdm (login page) not to draw the user background
   become: true
@@ -55,6 +55,7 @@
 # To work around error:
 # Cannot autolaunch D-Bus without X11 $DISPLAY
 - name: set the background image
+  # yamllint disable-line rule:line-length
   shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"
   args:
     executable: /bin/bash

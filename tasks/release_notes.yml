@@ -24,4 +24,3 @@
     section: "{{ qm_customizations_vm_name }}"
     option: "Login credentials"
     value: "{{ qm_customizations_vm_user }} / {{ qm_customizations_vm_password }}"
-

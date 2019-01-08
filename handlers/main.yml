@@ -12,7 +12,7 @@
   service:
     name: gdm
     state: restarted
-  listen: restart gdm3 
+  listen: restart gdm3
 
 - name: restart lightdm
   become: true

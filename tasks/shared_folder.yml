@@ -1,12 +1,12 @@
 ---
 # This enables sudoless access to shared folder in VirtualBox
 - name: Add user to 'vboxsf' group
-  become: True
+  become: true
   become_user: "{{ root_user }}"
   user:
-      name: "{{ qm_customizations_vm_user }}"
-      groups: vboxsf
-      append: True
+    name: "{{ qm_customizations_vm_user }}"
+    groups: vboxsf
+    append: true
   when: cloud_platform == 'virtualbox'
 
 - include_role:
@@ -21,4 +21,3 @@
       The folder will appear in "/media/sf_<folder_name>"
     create: true
   when: release_notes is defined and release_notes
-
