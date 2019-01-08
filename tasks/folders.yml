@@ -36,7 +36,7 @@
 
 - name: create desktop if not exists
   file:
-    path: "${HOME}/Desktop/examples"
+    path: "${HOME}/Desktop"
     state: directory
   when: not qm_customizations_headless
 
