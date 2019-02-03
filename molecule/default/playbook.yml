@@ -10,7 +10,7 @@
   vars:
     - run_tests: true
     - cloud_platform: docker
-    - qm_customizations_headless: True
+    - qm_customizations_headless: true
 
   roles:
     - role: marvel-nccr.quantum_mobile_customizations
