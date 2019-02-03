@@ -1,12 +1,12 @@
 [![Build Status](https://travis-ci.org/marvel-nccr/ansible-role-quantum-mobile-customizations.svg?branch=master)](https://travis-ci.org/marvel-nccr/ansible-role-quantum-mobile-customizations)
 
-# Ansible Role: marvel-nccr.quantum-mobile-customizations
+# Ansible Role: marvel-nccr.quantum_mobile_customizations
 
 An ansible role that customizes Ubuntu for [Quantum Mobile](https://github.com/marvel-nccr/quantum-mobile).
 
 ## Installation
 
-`ansible-galaxy install marvel-nccr.quantum-mobile-customizations`
+`ansible-galaxy install marvel-nccr.quantum_mobile_customizations`
 
 ## Role Variables
 
@@ -17,7 +17,7 @@ See `defaults/main.yml`
 ```
 - hosts: machines
   roles:
-  - role: nccr-marvel.quantum-mobile-customizations
+  - role: nccr-marvel.quantum_mobile_customizations
 ```
 
 ## Tests

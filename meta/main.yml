@@ -2,7 +2,7 @@
 allow_duplicates: false
 
 galaxy_info:
-  role_name: quantum-mobile-customizations
+  role_name: quantum_mobile_customizations
   author: "MARVEL NCCR"
   # yamllint disable-line rule:line-length
   description: "An ansible role that customizes Ubuntu for [Quantum Mobile](https://github.com/marvel-nccr/quantum-mobile)."
