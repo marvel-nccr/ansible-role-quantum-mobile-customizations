@@ -13,4 +13,4 @@
   template:
     src: faq.desktop
     dest: "${HOME}/Desktop"
-    mode: 0753
+    mode: "0753"

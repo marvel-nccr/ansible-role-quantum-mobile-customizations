@@ -47,7 +47,7 @@
   become: true
   become_user: "{{ root_user }}"
   pip:
-    name: "{{item}}"
+    name: "{{ item }}"
   with_items:
     # Needed to set the wallpaper (maybe?)
     - psutil
@@ -55,8 +55,8 @@
 # To work around error:
 # Cannot autolaunch D-Bus without X11 $DISPLAY
 - name: set the background image
-  # yamllint disable-line rule:line-length
-  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"
+  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"  # yamllint disable-line rule:line-length
   args:
     executable: /bin/bash
+  when: (lightdm_background.changed) or (lightdm_draw_user_backgrounds.changed)
   notify: restart lightdm
