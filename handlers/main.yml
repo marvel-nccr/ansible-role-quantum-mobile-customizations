@@ -1,14 +1,12 @@
 ---
 - name: restart gdm3
   become: true
-  become_user: "{{ root_user }}"
   service:
     name: gdm3
     state: restarted
   listen: restart gdm
 - name: restart gdm
   become: true
-  become_user: "{{ root_user }}"
   service:
     name: gdm
     state: restarted
@@ -16,7 +14,6 @@
 
 - name: restart lightdm
   become: true
-  become_user: "{{ root_user }}"
   service:
     name: lightdm
     state: restarted

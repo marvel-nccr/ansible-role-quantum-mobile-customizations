@@ -14,4 +14,5 @@ qm_customizations_examples_readme: "{{ qm_customizations_examples_folder }}/READ
 qm_customizations_custom_folder: "${HOME}/.local/share/customizations"
 
 cloud_platform: virtualbox
-root_user: root
+# see https://github.com/ansible/ansible/issues/23530
+dconf_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER, true) | default(ansible_user_id, true) }}"
