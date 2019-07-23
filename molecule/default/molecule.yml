@@ -21,6 +21,7 @@ provisioner:
       x:
         - 'ANSIBLE0016'
         - 204
+        - 305
   playbooks:
     converge: playbook.yml
   options:

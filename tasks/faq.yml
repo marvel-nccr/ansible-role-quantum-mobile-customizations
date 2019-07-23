@@ -1,15 +1,13 @@
 ---
-- name: make icons directory
-  file:
-    dest: "${HOME}/.icons"
-    state: directory
-
 - name: copy quamtum-mobile logo
+  become: true
   copy:
     src: quantum-mobile-logo.png
-    dest: "${HOME}/.icons/"
+    dest: /usr/share/icons/
 
 - name: create desktop shortcut
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   template:
     src: faq.desktop
     dest: "${HOME}/Desktop"

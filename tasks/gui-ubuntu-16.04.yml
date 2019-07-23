@@ -1,23 +1,20 @@
 ---
 - name: Create folder for generic MARVEL data in global machine
   become: true
-  become_user: "{{ root_user }}"
   file:
-    path: "/usr/share/marvelnccr"
+    path: "{{ qm_customizations_custom_folder }}"
     state: directory
     mode: 0755
 
 - name: Copy the background image
   become: true
-  become_user: "{{ root_user }}"
   copy:
     src: quantum-mobile-bg.png
-    dest: "/usr/share/marvelnccr/quantum-mobile-bg.png"
+    dest: "{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"
     mode: 0755
 
-- name: set lightdm (login page) not to draw the user background
+- name: set login page not to draw the user background
   become: true
-  become_user: "{{ root_user }}"
   ini_file:
     path: /usr/share/glib-2.0/schemas/10_unity-settings-daemon.gschema.override
     section: "com.canonical.unity-greeter"
@@ -28,7 +25,6 @@
 
 - name: set lightdm (login page) background
   become: true
-  become_user: "{{ root_user }}"
   ini_file:
     path: /usr/share/glib-2.0/schemas/10_unity-settings-daemon.gschema.override
     section: "com.canonical.unity-greeter"
@@ -39,13 +35,11 @@
 
 - name: recreate schemas to apply modifications
   become: true
-  become_user: "{{ root_user }}"
   command: glib-compile-schemas /usr/share/glib-2.0/schemas
   when: (lightdm_background.changed) or (lightdm_draw_user_backgrounds.changed)
 
 - name: add packages (pip)
   become: true
-  become_user: "{{ root_user }}"
   pip:
     name: "{{ item }}"
   with_items:
@@ -55,7 +49,9 @@
 # To work around error:
 # Cannot autolaunch D-Bus without X11 $DISPLAY
 - name: set the background image
-  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://${HOME}/.local/share/marvelnccr/quantum-mobile-bg.png"  # yamllint disable-line rule:line-length
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
+  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"  # yamllint disable-line rule:line-length
   args:
     executable: /bin/bash
   when: (lightdm_background.changed) or (lightdm_draw_user_backgrounds.changed)

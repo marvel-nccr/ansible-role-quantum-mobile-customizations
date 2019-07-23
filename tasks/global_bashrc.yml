@@ -1,7 +1,6 @@
 ---
 - name: set the Message Of The Day (MOTD)
   become: true
-  become_user: "{{ root_user }}"
   template:
     src: motd
     dest: "/etc/motd"
@@ -11,6 +10,8 @@
   # Note that this is added at the end of the file, so
   # with the default bashrc by Ubuntu, it's run only interactively
   # moreover, login shells already print it by default
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   lineinfile:
     path: "${HOME}/.bashrc"
     line: "shopt -q login_shell || cat /etc/motd # Print only in non-login shells"

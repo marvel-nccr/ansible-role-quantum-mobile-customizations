@@ -1,21 +1,27 @@
 ---
 - name: Create folder for generic MARVEL data
+  become: true
   file:
     path: "{{ qm_customizations_custom_folder }}"
     state: directory
 
 - name: Copy the background image
+  become: true
   copy:
     src: quantum-mobile-bg.png
     dest: "{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"
     mode: 0755
 
 - name: Create folder for examples
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   file:
     path: "{{ qm_customizations_examples_folder }}"
     state: directory
 
 - name: clean compiled python files
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   shell: find . -name "*.pyc" | xargs rm -f
   ignore_errors: true
   args:
@@ -23,6 +29,8 @@
   when: clean is defined and clean
 
 - name: Add readme for examples
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   ini_file:
     path: "{{ qm_customizations_examples_readme }}"
     section: "General"
@@ -35,12 +43,16 @@
     create: true
 
 - name: create desktop if not exists
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   file:
     path: "${HOME}/Desktop"
     state: directory
   when: not qm_customizations_headless
 
 - name: symlink examples to desktop
+  become: true
+  become_user: "{{ qm_customizations_vm_user }}"
   file:
     src: "{{ qm_customizations_examples_folder }}"
     dest: "${HOME}/Desktop/examples"
