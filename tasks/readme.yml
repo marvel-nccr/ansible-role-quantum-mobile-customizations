@@ -1,0 +1,7 @@
+---
+- name: Add README to Desktop
+  become_user: "{{ qm_customizations_vm_user }}"
+  become: true
+  template:
+    src: README.md
+    dest: "{{ vm_readme_file }}"

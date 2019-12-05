@@ -3,6 +3,9 @@
   tags: qm_customizations_release_notes
   when: release_notes is defined and release_notes
 
+- import_tasks: readme.yml
+  tags: qm_customizations_readme
+
 - import_tasks: shared_folder.yml
   tags: qm_customizations_shared_folder
 
