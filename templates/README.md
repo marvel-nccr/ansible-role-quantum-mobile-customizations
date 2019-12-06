@@ -19,6 +19,6 @@ all of which are set up and ready to be used through on their own or through [Ai
 
  * All executables haven been installed in `/usr/local/bin`
 
- * Use `mpirun -np {{ vm_cpus }}` in order to run in parallel.
+ * Use `mpirun -np {{ qm_customizations_vm_cpus }}` in order to run in parallel.
 
- * Find further release notes and pseudopotentials in `{{ vm_codes_folder }}`
+ * Find pseudopotentials in `{{ qm_customizations_data_folder }}`
