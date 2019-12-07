@@ -11,7 +11,7 @@ It comes with a collection of software packages for quantum mechanical calculati
  * [CP2K](https://www.cp2k.org)
  * [Wannier90](http://www.wannier.org)
 
-all of which are set up and ready to be used through on their own or through [AiiDA](http://www.aiida.net).
+all of which are set up and ready to be used on their own or through [AiiDA](http://www.aiida.net).
 
 # Getting started
 
@@ -22,3 +22,9 @@ all of which are set up and ready to be used through on their own or through [Ai
  * Use `mpirun -np {{ qm_customizations_vm_cpus }}` in order to run in parallel.
 
  * Find pseudopotentials in `{{ qm_customizations_data_folder }}`
+
+ * To share a folder with the VM, stop the VM, select
+     Machine => Settings => Shared Folders => Add Folder Icon
+   and tick "Automount". The folder will appear in "/media/sf_<folder_name>".
+
+For troubleshooting, click the "FAQ" icon on the Desktop.

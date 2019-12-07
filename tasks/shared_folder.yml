@@ -7,16 +7,3 @@
     groups: vboxsf
     append: true
   when: cloud_platform == 'virtualbox'
-
-- include_role:
-    name: release_notes
-  vars:
-    section: "{{ qm_customizations_vm_name }}"
-    option: "shared folder"
-    value: >-
-      To share a folder with the VM, stop the VM,
-      select Machine => Settings => Shared Folders => Add Folder Icon
-      and tick "Automount".
-      The folder will appear in "/media/sf_<folder_name>"
-    create: true
-  when: release_notes is defined and release_notes
