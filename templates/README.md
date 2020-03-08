@@ -10,6 +10,7 @@ It comes with a collection of software packages for quantum mechanical calculati
  * [Siesta](https://gitlab.com/siesta-project/siesta)
  * [CP2K](https://www.cp2k.org)
  * [Wannier90](http://www.wannier.org)
+ * [BigDFT](http://www.bigdft.org)
 
 all of which are set up and ready to be used on their own or through [AiiDA](http://www.aiida.net).
 
