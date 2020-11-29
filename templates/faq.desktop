@@ -1,7 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=FAQ
-Comment=Frequently Asked Questions
-Exec={{ qm_customizations_browser }} https://github.com/marvel-nccr/quantum-mobile/wiki/Frequently-Asked-Questions
-Icon=quantum-mobile-logo.png
-Type=Application
