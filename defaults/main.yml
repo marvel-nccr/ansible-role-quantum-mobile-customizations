@@ -12,5 +12,16 @@ qm_customizations_data_folder: "/usr/local/share"
 qm_customizations_examples_folder: "${HOME}/examples"
 qm_customizations_examples_readme: "{{ qm_customizations_examples_folder }}/README.txt"
 qm_customizations_custom_folder: "/usr/local/share/qm-customizations"
+qm_customizations_readme_file: "${HOME}/Desktop/README.md"
+
+qm_customizations_homepage: "https://quantum-mobile.readthedocs.io"
+qm_customizations_urls:
+  Quantum ESPRESSO: http://www.quantum-espresso.org/
+  Yambo: http://www.yambo-code.org/
+  fleur: http://www.flapw.de/
+  Siesta: https://gitlab.com/siesta-project/siesta
+  CP2K: https://www.cp2k.org
+  Wannier90: http://www.wannier.org
+  BigDFT: http://www.bigdft.org
 
 cloud_platform: virtualbox

@@ -2,30 +2,26 @@
 
 *Quantum Mobile* is a Virtual Machine for computational materials science, distributed by the {{ qm_customizations_vm_author }}.
 
-It comes with a collection of software packages for quantum mechanical calculations, including
+It comes with a collection of software packages for quantum mechanical calculations, including:
 
- * [Quantum ESPRESSO](http://www.quantum-espresso.org/)
- * [Yambo](http://www.yambo-code.org/)
- * [fleur](http://www.flapw.de/)
- * [Siesta](https://gitlab.com/siesta-project/siesta)
- * [CP2K](https://www.cp2k.org)
- * [Wannier90](http://www.wannier.org)
- * [BigDFT](http://www.bigdft.org)
+{% for name, url in qm_customizations_urls.items() %}
+* [{{ name }}]({{ url }})
+{% endfor %}
 
 all of which are set up and ready to be used on their own or through [AiiDA](http://www.aiida.net).
 
 # Getting started
 
- * Click the Terminal icon and type `workon aiida`
+* Click the Terminal icon and type `workon aiida`
 
- * All executables haven been installed in `/usr/local/bin`
+* All executables have been installed in `/usr/local/bin`
 
- * Use `mpirun -np {{ qm_customizations_vm_cpus }}` in order to run in parallel.
+* Use `mpirun -np {{ qm_customizations_vm_cpus }}` in order to run in parallel.
 
- * Find pseudopotentials in `{{ qm_customizations_data_folder }}`
+* Data such as pseudopotentials can be found in `{{ qm_customizations_data_folder }}`
 
- * To share a folder with the VM, stop the VM, select
+* To share a folder with the VM, stop the VM, select
      Machine => Settings => Shared Folders => Add Folder Icon
    and tick "Automount". The folder will appear in "/media/sf_<folder_name>".
 
-For troubleshooting, click the "FAQ" icon on the Desktop.
+For troubleshooting and other information, see: {{ qm_customizations_homepage }}.

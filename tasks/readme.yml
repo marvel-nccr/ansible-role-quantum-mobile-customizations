@@ -1,6 +1,11 @@
+- name: Ensure {{ qm_customizations_readme_file | dirname }} exists exists
+  file:
+    path: "{{ qm_customizations_readme_file | dirname }}"
+    state: directory
+
 - name: Add README to Desktop
   become_user: "{{ qm_customizations_vm_user }}"
   become: true
   template:
     src: README.md
-    dest: "{{ vm_readme_file }}"
+    dest: "{{ qm_customizations_readme_file }}"
