@@ -1,4 +1,3 @@
----
 - import_tasks: release_notes.yml
   tags: qm_customizations_release_notes
   when: release_notes is defined and release_notes
@@ -18,11 +17,11 @@
 - name: gui-related tasks
   tags: qm_customizations_gui
   block:
-    - include_tasks: gui-ubuntu-16.04.yml
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
-    - include_tasks: gui-ubuntu-18.04.yml
-      when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
-    - import_tasks: faq.yml
+  - include_tasks: gui-ubuntu-16.04.yml
+    when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+  - include_tasks: gui-ubuntu-18.04.yml
+    when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+  - import_tasks: faq.yml
   when: not qm_customizations_headless
 
 - meta: flush_handlers

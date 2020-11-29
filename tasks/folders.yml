@@ -1,4 +1,3 @@
----
 - name: Create folder for generic MARVEL data
   become: true
   file:

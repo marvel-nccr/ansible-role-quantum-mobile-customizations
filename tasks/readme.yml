@@ -1,4 +1,3 @@
----
 - name: Add README to Desktop
   become_user: "{{ qm_customizations_vm_user }}"
   become: true

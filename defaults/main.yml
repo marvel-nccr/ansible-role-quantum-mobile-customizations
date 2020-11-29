@@ -1,4 +1,3 @@
----
 qm_customizations_headless: false
 qm_customizations_vm_user: "{{ ansible_env.SUDO_USER | default(ansible_env.USER, true) | default(ansible_user_id, true) }}"
 # qm_customizations_vm_password: # Need to specify this!
