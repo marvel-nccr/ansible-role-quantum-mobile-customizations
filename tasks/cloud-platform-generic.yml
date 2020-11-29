@@ -1,4 +1,3 @@
----
 - import_tasks: release_notes.yml
   tags: qm_customizations_release_notes
   when: release_notes is defined and release_notes

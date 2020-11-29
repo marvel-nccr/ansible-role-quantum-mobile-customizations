@@ -1,4 +1,3 @@
----
 - name: Create folder for generic MARVEL data in global machine
   become: true
   file:
@@ -44,14 +43,16 @@
     name: "{{ item }}"
   with_items:
     # Needed to set the wallpaper (maybe?)
-    - psutil
+  - psutil
 
 # To work around error:
 # Cannot autolaunch D-Bus without X11 $DISPLAY
 - name: set the background image
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
-  shell: "DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background picture-uri file://{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png"  # yamllint disable-line rule:line-length
+  shell: >
+    DISPLAY=:0.0 dbus-launch --exit-with-session gsettings set org.gnome.desktop.background
+    picture-uri file://{{ qm_customizations_custom_folder }}/quantum-mobile-bg.png
   args:
     executable: /bin/bash
   when: (lightdm_background.changed) or (lightdm_draw_user_backgrounds.changed)

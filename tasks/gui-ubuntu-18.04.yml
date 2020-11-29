@@ -1,8 +1,8 @@
----
 - name: install psutil
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
   pip:
+    # Needed to set the wallpaper (maybe?)
     name: psutil
 
 # Note: This is applied immediately, no restart needed

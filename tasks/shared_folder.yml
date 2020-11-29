@@ -1,4 +1,3 @@
----
 # This enables sudoless access to shared folder in VirtualBox
 - name: Add user to 'vboxsf' group
   become: true
