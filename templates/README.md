@@ -16,7 +16,7 @@ all of which are set up and ready to be used on their own or through [AiiDA](htt
 
 * All executables have been installed in `/usr/local/bin`
 
-* Use `mpirun -np {{ qm_customizations_vm_cpus }}` in order to run in parallel.
+* Use `mpirun -np 2 executable` in order to run in parallel.
 
 * Data such as pseudopotentials can be found in `{{ qm_customizations_data_folder }}`
 
