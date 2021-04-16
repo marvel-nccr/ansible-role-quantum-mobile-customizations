@@ -12,6 +12,7 @@
     mode: 0755
 
 - name: Create folder for examples
+  when: qm_customizations_examples_folder is truthy
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
   file:
@@ -19,17 +20,18 @@
     state: directory
 
 - name: clean compiled python files
+  when: qm_customizations_examples_folder is truthy and clean is defined and clean
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
   shell: find . -name "*.pyc" | xargs rm -f
   ignore_errors: true
   args:
     chdir: "{{ qm_customizations_examples_folder }}"
-  when: clean is defined and clean
 
 - name: Add readme for examples
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
+  when: qm_customizations_examples_readme is truthy
   ini_file:
     path: "{{ qm_customizations_examples_readme }}"
     section: "General"
@@ -50,10 +52,10 @@
   when: not qm_customizations_headless
 
 - name: symlink examples to desktop
+  when: qm_customizations_examples_folder is truthy and not qm_customizations_headless
   become: true
   become_user: "{{ qm_customizations_vm_user }}"
   file:
     src: "{{ qm_customizations_examples_folder }}"
     dest: "${HOME}/Desktop/examples"
     state: link
-  when: not qm_customizations_headless
